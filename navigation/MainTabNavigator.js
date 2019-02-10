@@ -85,22 +85,6 @@ SettingsStack.navigationOptions = {
   ),
 };
 
-const ResourceStack = createStackNavigator({
-  Resource: ResourceScreen,
-});
-
-ResourceStack.navigationOptions = {
-  tabBarLabel: 'Resource',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
-  ),
-};
 
 
 const styles = StyleSheet.create({
@@ -127,5 +111,4 @@ export default createBottomTabNavigator({
   HomeStack,
   LinksStack,
   SettingsStack,
-  ResourceStack,
 });
