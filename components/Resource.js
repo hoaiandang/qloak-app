@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Image,
-  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -12,6 +11,22 @@ import {
  class Resource extends React.Component {
 	constructor(props) {
 		super(props);
+		this.color = this.color.bind(this);
+	}
+
+	color() {
+		const c = this.props.category;
+		if (c == 'Work') {
+			return 'red';
+		} else if (c == 'Play') {
+			return 'blue';
+		} else if (c == 'Medical') {
+			return 'green';
+		} else if (c == 'Safety') {
+			return 'orange';
+		} else if (c == 'Services') {
+			return 'purple';
+		}
 	}
 
 	render() {
@@ -21,16 +36,19 @@ import {
 					<Image style={styles.welcomeImage} source={require('../assets/images/new-alternatives.jpg')} />
 				</View>
 				<View style={styles.descriptionContainer}>
-					<Text style={styles.titleText}>
-						New Alternatives
-					</Text>
-					<Text style={{fontSize: 6}}> </Text>
-					<Text style={styles.descriptionText}>
-						(718) 300-0133
-					</Text>
-					<Text style={styles.descriptionText}>
-						410 West 40th Street, New York, NY 10018
-					</Text>
+					<View style={styles.categoryDot}/>
+					<View style={styles.textContainer}>
+						<Text style={styles.titleText}>
+							New Alternatives
+						</Text>
+						<Text style={{fontSize: 6}}> </Text>
+						<Text style={styles.descriptionText}>
+							(718) 300-0133
+						</Text>
+						<Text style={styles.descriptionText}>
+							410 West 40th Street, New York, NY 10018
+						</Text>
+					</View>
 				</View>
 		 	</TouchableOpacity>
 	 	)
@@ -47,9 +65,15 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1, 
     shadowRadius: 3,
   }, 
-  descriptionContainer: {
+  textContainer: {
   	position: 'relative',
-  	padding: 12,
+  	padding: 20,
+  	paddingLeft: 12,
+  },
+  descriptionContainer: {
+  	flexDirection: 'row',
+  	justifyContent: 'flex-start',
+  	alignItems: 'flex-start',
   },
   descriptionText: {
   	color: 'rgba(0,0,0,0.7)',
@@ -70,6 +94,14 @@ const styles = StyleSheet.create({
   	flexDirection: 'row',
   	overflow: 'hidden',
   	borderRadius: 6,
+  },
+  categoryDot: {
+  	marginTop: 24,
+  	marginLeft: 20,
+  	height: 10,
+  	width: 10,
+  	borderRadius: 5,
+  	backgroundColor: 'orange',
   },
 });
 

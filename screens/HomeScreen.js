@@ -11,6 +11,7 @@ import {
 import { WebBrowser, LinearGradient } from 'expo';
 import { MonoText } from '../components/StyledText';
 import Resource from '../components/Resource';
+import Category from '../components/Category';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -38,16 +39,17 @@ export default class HomeScreen extends React.Component {
             </LinearGradient>
           </View>
           <View style={styles.categoryNav}>
-            <View style={[styles.categoryButton, styles.shadow, {backgroundColor: 'red'}]}></View>
-            <View style={[styles.categoryButton, styles.shadow, {backgroundColor: 'blue'}]}></View>
-            <View style={[styles.categoryButton, styles.shadow, {backgroundColor: 'green'}]}></View>
-            <View style={[styles.categoryButton, styles.shadow, {backgroundColor: 'orange'}]}></View>
+            <Category category={'Work'}/>
+            <Category category={'Play'}/>
+            <Category category={'Medical'}/>
+            <Category category={'Safety'}/>
+            <Category category={'Services'}/>
           </View>
 
           <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <Resource style={styles.elem}></Resource>
-          <Resource style={styles.elem}></Resource>
-          <Resource style={styles.elem}></Resource>
+          <Resource style={styles.elem}/>
+          <Resource style={styles.elem}/>
+          <Resource style={styles.elem}/>
 
 
 
@@ -143,12 +145,11 @@ const styles = StyleSheet.create({
   },
   categoryNav: {
     width: '100%',
-    height: 50,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     opacity: 0.5,
-    marginTop: 20,
-    marginBottom: 20,
+    marginTop: 24,
+    marginBottom: 16,
   },
   elem: {
     marginBottom: 12,
