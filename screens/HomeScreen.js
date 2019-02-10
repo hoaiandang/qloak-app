@@ -9,8 +9,8 @@ import {
   View,
 } from 'react-native';
 import { WebBrowser, LinearGradient } from 'expo';
-
 import { MonoText } from '../components/StyledText';
+import Resource from '../components/Resource';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -20,8 +20,8 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View style={styles.welcomeContainer}>
+        
+          <View style={styles.headerContainer}>
             <LinearGradient
               colors={['#FB9DA0', '#FACDC3']}
               style={styles.header}
@@ -43,6 +43,13 @@ export default class HomeScreen extends React.Component {
             <View style={[styles.categoryButton, styles.shadow, {backgroundColor: 'green'}]}></View>
             <View style={[styles.categoryButton, styles.shadow, {backgroundColor: 'orange'}]}></View>
           </View>
+
+          <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+          <Resource style={styles.elem}></Resource>
+          <Resource style={styles.elem}></Resource>
+          <Resource style={styles.elem}></Resource>
+
+
 
           <View style={styles.getStartedContainer}>
             {this._maybeRenderDevelopmentModeWarning()}
@@ -115,9 +122,16 @@ const styles = StyleSheet.create({
     alignItems: 'center', 
     borderRadius: 0, 
     width: '100%', 
-    top: -30, 
     paddingTop: 60, 
     paddingBottom: 20, 
+  },
+    headerContainer: {
+    alignItems: 'center',
+    shadowOffset:{  width: 0,  height: 3,  },
+    shadowColor: 'black',
+    shadowOpacity: 0.1, 
+    shadowRadius: 3,
+    zIndex: 1,  
   },
   categoryButton: {
     height: 50,
@@ -129,10 +143,15 @@ const styles = StyleSheet.create({
   },
   categoryNav: {
     width: '100%',
+    height: 50,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    flex: 1,
-    opacity: 0.7,
+    opacity: 0.5,
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  elem: {
+    marginBottom: 12,
   },
   container: {
     flex: 1,
@@ -146,20 +165,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   contentContainer: {
-    paddingTop: 30,
-  },
-  welcomeContainer: {
-    alignItems: 'center',
-    shadowOffset:{  width: 0,  height: 2,  },
-    shadowColor: 'black',
-    shadowOpacity: 0.2,   
-  },
-  welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   getStartedContainer: {
     alignItems: 'center',
