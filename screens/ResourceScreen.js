@@ -14,22 +14,22 @@ import { MonoText } from '../components/StyledText';
 import Resource from '../components/Resource';
 import Category from '../components/Category';
 
-
-export default class HomeScreen extends React.Component {
+export default class ResourceScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
 
-  onPress = (user) => {
-    this.props.navigation.navigate('Details', { ...user });
+  onBackPress = (user) => {
+    this.props.navigation.navigate('Feed', { ...user });
     console.log("this happens");
   };
-
 
   render() {
     return (
       <View style={styles.container}>
-          <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+        <TouchableOpacity onPress={this.onBackPress}>
+          <Text>Back</Text>
+        </TouchableOpacity>
           <View style={styles.categoryNavContainer}>
             <View style={[styles.categoryNav, styles.shadow]}>
               <Category category={'Work'}/>
@@ -38,8 +38,8 @@ export default class HomeScreen extends React.Component {
               <Category category={'Play'}/>
             </View>
           </View>
-          <Resource style={styles.resourceElement} onPress={this.onPress}/>
-          <Resource style={styles.resourceElement}/>
+
+          <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <Resource style={styles.resourceElement}/>
         </ScrollView>
       </View>
@@ -84,14 +84,13 @@ const styles = StyleSheet.create({
   shadow: {
     shadowOffset:{  width: 0,  height: 3,  },
     shadowColor: 'black',
-    shadowOpacity: 0.15, 
-    shadowRadius: 1.5,
+    shadowOpacity: 0.1, 
+    shadowRadius: 1,
   },
   header: {
     alignItems: 'center', 
     borderRadius: 0, 
     width: '100%', 
-    marginTop: -56,
     paddingTop: 56, 
     paddingBottom: 16, 
   },
@@ -105,7 +104,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     paddingTop: 24,
     paddingBottom: 12,
-    marginBottom: 16,
+    marginBottom: -20,
     marginTop: 16,
     backgroundColor: 'white',
     borderRadius: 20,
@@ -132,6 +131,6 @@ const styles = StyleSheet.create({
   contentContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 8,
+    paddingTop: 36,
   },
 });

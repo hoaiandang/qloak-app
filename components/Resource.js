@@ -7,6 +7,9 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { LinearGradient } from 'expo';
+
+
  
  class Resource extends React.Component {
 	constructor(props) {
@@ -22,31 +25,33 @@ import {
 			return 'blue';
 		} else if (c == 'Medical') {
 			return 'green';
-		} else if (c == 'Safety') {
+		} else if (c == 'Shelter') {
 			return 'orange';
 		} else if (c == 'Services') {
 			return 'purple';
 		}
 	}
 
+
+
 	render() {
 		return (
-			<TouchableOpacity style={[styles.container, this.props.style]}>
+			<TouchableOpacity onPress={this.props.onPress} style={[styles.container, this.props.style]}>
 				<View style={styles.imageContainer}>
-					<Image style={styles.welcomeImage} source={require('../assets/images/new-alternatives.jpg')} />
+					<Image style={styles.welcomeImage} source={require('../assets/images/pacific-center-for-human-growth.jpg')} />
 				</View>
 				<View style={styles.descriptionContainer}>
 					<View style={styles.categoryDot}/>
 					<View style={styles.textContainer}>
 						<Text style={styles.titleText}>
-							New Alternatives
+							Pacific Center for Human Growth
 						</Text>
 						<Text style={{fontSize: 6}}> </Text>
 						<Text style={styles.descriptionText}>
-							(718) 300-0133
+							(510) 548-8283
 						</Text>
 						<Text style={styles.descriptionText}>
-							410 West 40th Street, New York, NY 10018
+							2712 Telegraph Avenue, Berkeley, CA, 94705
 						</Text>
 					</View>
 				</View>
@@ -59,11 +64,11 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     width: '90%',
-    borderRadius: 6,
+    borderRadius: 10,
     shadowOffset:{  width: 0,  height: 3,  },
     shadowColor: 'black',
-    shadowOpacity: 0.1, 
-    shadowRadius: 3,
+    shadowOpacity: 0.15, 
+    shadowRadius: 1.5,
   }, 
   textContainer: {
   	position: 'relative',
@@ -85,15 +90,21 @@ const styles = StyleSheet.create({
   	fontSize: 16,
   },
   welcomeImage: {
-    width: '100%',
-    height: 150,
+    height: 120,
     resizeMode: 'cover',
-    opacity: 1,
+    marginTop: 16,
+    borderRadius: 6,
+    width: '90%',
+    borderWidth: 1, 
+    borderColor: 'rgba(0,0,0,0.1)',
+    opacity: 0.85,
   },
   imageContainer: {
   	flexDirection: 'row',
   	overflow: 'hidden',
-  	borderRadius: 6,
+  	borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   categoryDot: {
   	marginTop: 24,
@@ -102,6 +113,7 @@ const styles = StyleSheet.create({
   	width: 10,
   	borderRadius: 5,
   	backgroundColor: 'orange',
+    opacity: 0.5,
   },
 });
 

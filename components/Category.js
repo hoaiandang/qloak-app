@@ -22,7 +22,7 @@ import {
       return 'blue';
     } else if (c == 'Medical') {
       return 'green';
-    } else if (c == 'Safety') {
+    } else if (c == 'Shelter') {
       return 'orange';
     } else if (c == 'Services') {
       return 'purple';
@@ -33,7 +33,7 @@ import {
 		return (
       <View style={[styles.container, this.props.style]}>
         <TouchableOpacity style={[styles.category, {backgroundColor: this.color()}]}/>
-        <Text style={{paddingTop: 12,}}>{this.props.category}</Text>
+        <Text style={{paddingTop: 4, fontSize: 12, color: 'rgba(0,0,0,0.5)'}}>{this.props.category}</Text>
       </View>
     )
   }
@@ -48,9 +48,11 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
     borderRadius: 25,
-    shadowOffset:{  width: 2,  height: 2,  },
+    shadowOffset:{  width: 0,  height: 3,  },
     shadowColor: 'black',
-    shadowOpacity: 0.4,
+    shadowOpacity: 0.2, 
+    shadowRadius: 1,
+    opacity: 0.5,
   },
 });
 
