@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { WebBrowser } from 'expo';
+import { WebBrowser, LinearGradient } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 
@@ -22,14 +22,26 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
+            <LinearGradient
+              colors={['#FB9DA0', '#FACDC3']}
+              style={styles.header}
+              end={[1, 0.8]}>
+              <Text
+                style={{
+                  backgroundColor: 'transparent',
+                  fontSize: 20,
+                  color: '#fff',
+                  fontWeight: 'bold',
+                }}>
+                Qloak
+              </Text>
+            </LinearGradient>
+          </View>
+          <View style={styles.categoryNav}>
+            <View style={[styles.categoryButton, styles.shadow, {backgroundColor: 'red'}]}></View>
+            <View style={[styles.categoryButton, styles.shadow, {backgroundColor: 'blue'}]}></View>
+            <View style={[styles.categoryButton, styles.shadow, {backgroundColor: 'green'}]}></View>
+            <View style={[styles.categoryButton, styles.shadow, {backgroundColor: 'orange'}]}></View>
           </View>
 
           <View style={styles.getStartedContainer}>
@@ -99,6 +111,29 @@ export default class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  header: {
+    alignItems: 'center', 
+    borderRadius: 0, 
+    width: '100%', 
+    top: -30, 
+    paddingTop: 60, 
+    paddingBottom: 20, 
+  },
+  categoryButton: {
+    height: 50,
+    width: 50,
+    borderRadius: 25,
+    shadowOffset:{  width: 2,  height: 2,  },
+    shadowColor: 'black',
+    shadowOpacity: 0.4,
+  },
+  categoryNav: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    flex: 1,
+    opacity: 0.7,
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -115,8 +150,9 @@ const styles = StyleSheet.create({
   },
   welcomeContainer: {
     alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
+    shadowOffset:{  width: 0,  height: 2,  },
+    shadowColor: 'black',
+    shadowOpacity: 0.2,   
   },
   welcomeImage: {
     width: 100,
