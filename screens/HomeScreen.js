@@ -31,16 +31,90 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
           <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.categoryNavContainer}>
-            <View style={[styles.categoryNav, styles.shadow]}>
-              <Category category={'Work'}/>
-              <Category category={'Shelter'}/>
-              <Category category={'Medical'}/>
+            <View style={[styles.categoryNav]}>
               <Category category={'Play'}/>
+              <Category category={'Eat'}/>
+              <Category category={'Shop'}/>
+              <Category category={'Health'}/>
+              <Category category={'Work'}/>
             </View>
           </View>
-          <Resource style={styles.resourceElement} onPress={this.onPress}/>
-          <Resource style={styles.resourceElement}/>
-          <Resource style={styles.resourceElement}/>
+          <Resource
+            style={styles.resourceElement}
+            onPress={this.props.onResourcePress}
+            category={"Health"}
+            title={"SF LGBTQ Center"}
+            distance={"0.5"}
+            image={require("../assets/images/sf-lgbtq-center.jpg")}
+            parentState={this.props.parentState}
+            onPlayPress={this.props.onPlayPress}
+            onEatPress={this.props.onEatPress}
+            onShopPress={this.props.onShopPress}
+            onHealthPress={this.props.onHealthPress}
+            onWorkPress={this.props.onWorkPress}
+            onUnPress={this.props.onUnPress}
+          />
+          <Resource
+            style={styles.resourceElement}
+            onPress={this.props.onResourcePress}
+            category={"Eat"}
+            title={"Celia's Mexican Restaurant"}
+            distance={"0.5"}
+            image={require("../assets/images/celias-mexican-restaurant.jpg")}
+            parentState={this.props.parentState}
+            onPlayPress={this.props.onPlayPress}
+            onEatPress={this.props.onEatPress}
+            onShopPress={this.props.onShopPress}
+            onHealthPress={this.props.onHealthPress}
+            onWorkPress={this.props.onWorkPress}
+            onUnPress={this.props.onUnPress}
+            onPress={this.onPress}
+          />
+          <Resource
+            style={styles.resourceElement}
+            onPress={this.props.onResourcePress}
+            category={"Shop"}
+            title={"Outfit Castro"}
+            distance={"0.5"}
+            image={require("../assets/images/outfit-castro.jpg")}
+            parentState={this.props.parentState}
+            onPlayPress={this.props.onPlayPress}
+            onEatPress={this.props.onEatPress}
+            onShopPress={this.props.onShopPress}
+            onHealthPress={this.props.onHealthPress}
+            onWorkPress={this.props.onWorkPress}
+            onUnPress={this.props.onUnPress}
+          />
+          <Resource
+            style={styles.resourceElement}
+            onPress={this.props.onResourcePress}
+            category={"Play"}
+            title={"Cinch Saloon"}
+            distance={"0.5"}
+            image={require("../assets/images/cinch-saloon.jpg")}
+            parentState={this.props.parentState}
+            onPlayPress={this.props.onPlayPress}
+            onEatPress={this.props.onEatPress}
+            onShopPress={this.props.onShopPress}
+            onHealthPress={this.props.onHealthPress}
+            onWorkPress={this.props.onWorkPress}
+            onUnPress={this.props.onUnPress}
+          />
+          <Resource
+            style={styles.resourceElement}
+            onPress={this.props.onResourcePress}
+            category={"Work"}
+            title={"American Airlines"}
+            distance={"0.5"}
+            image={require("../assets/images/american-airlines.jpg")}
+            parentState={this.props.parentState}
+            onPlayPress={this.props.onPlayPress}
+            onEatPress={this.props.onEatPress}
+            onShopPress={this.props.onShopPress}
+            onHealthPress={this.props.onHealthPress}
+            onWorkPress={this.props.onWorkPress}
+            onUnPress={this.props.onUnPress}
+          />
         </ScrollView>
       </View>
     );
@@ -82,10 +156,10 @@ export default class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
   shadow: {
-    shadowOffset:{  width: 0,  height: 3,  },
+    shadowOffset:{  width: 0,  height: 4,  },
     shadowColor: 'black',
     shadowOpacity: 0.15, 
-    shadowRadius: 1.5,
+    shadowRadius: 2,
   },
   header: {
     alignItems: 'center', 
@@ -100,13 +174,11 @@ const styles = StyleSheet.create({
     zIndex: 10,  
   },
   categoryNav: {
-    width: '90%',
+    width: '82%',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    paddingTop: 24,
-    paddingBottom: 12,
-    marginBottom: 16,
-    marginTop: 16,
+    paddingTop: 32,
+    paddingBottom: 20,
     backgroundColor: 'white',
     borderRadius: 20,
   },
@@ -116,11 +188,11 @@ const styles = StyleSheet.create({
     zIndex: 9,
   },
   resourceElement: {
-    marginBottom: 12,
+    marginBottom: 20,
   },
   container: {
     flex: 1,
-    backgroundColor: '#F4F4F4',
+    backgroundColor: 'white',
   },
   developmentModeText: {
     marginBottom: 20,

@@ -22,7 +22,7 @@ HomeFeedStack.navigationOptions = {
   header: () => (
     <View style={styles.shadow}>
     <LinearGradient
-              colors={['#FB9DA0', '#FACDC3']}
+              colors={['rgba(0,0,0,0.9)', 'rgba(0,0,0,0.9)']}
               style={[styles.header, styles.shadow]}
               end={[1, 0.8]}>
               <Text
@@ -30,11 +30,12 @@ HomeFeedStack.navigationOptions = {
                   backgroundColor: 'transparent',
                   fontSize:18,
                   color: '#fff',
-                  fontWeight: 'bold',
+                  fontWeight: '600',
                 }}>
                 Qloak
               </Text>
     </LinearGradient>
+
     </View>
     )
 }

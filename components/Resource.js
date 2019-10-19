@@ -8,52 +8,58 @@ import {
   View,
 } from 'react-native';
 import { LinearGradient } from 'expo';
+import { Rating } from 'react-native-ratings';
 
 
  
  class Resource extends React.Component {
 	constructor(props) {
 		super(props);
-		this.color = this.color.bind(this);
+    this.color = this.color.bind(this);
 	}
 
-	color() {
-		const c = this.props.category;
-		if (c == 'Work') {
-			return 'red';
-		} else if (c == 'Play') {
-			return 'blue';
-		} else if (c == 'Medical') {
-			return 'green';
-		} else if (c == 'Shelter') {
-			return 'orange';
-		} else if (c == 'Services') {
-			return 'purple';
-		}
-	}
+  color() {
+    const c = this.props.category;
+    if (c == "Play") {
+      return "#E55F00";
+    } else if (c == "Eat") {
+      return "#008FBF";
+    } else if (c == "Shop") {
+      return "#F2BC76";
+    } else if (c == "Health") {
+      return "#E8D2AE";
+    } else if (c == "Work") {
+      return "#66351D";
+    }
+  }
+
+
 
 
 
 	render() {
 		return (
-			<TouchableOpacity onPress={this.props.onPress} style={[styles.container, this.props.style]}>
+			<TouchableOpacity onPress={this.props.onPress} style={[styles.container, this.props.style, ]}>
 				<View style={styles.imageContainer}>
-					<Image style={styles.welcomeImage} source={require('../assets/images/pacific-center-for-human-growth.jpg')} />
+          <View
+            style={{ 
+              backgroundColor: this.color(), 
+              height: 10, 
+              width: "100%", 
+              opacity: 0.8 }}
+          />
+					<Image style={styles.welcomeImage} source={this.props.image} />
 				</View>
 				<View style={styles.descriptionContainer}>
-					<View style={styles.categoryDot}/>
 					<View style={styles.textContainer}>
 						<Text style={styles.titleText}>
-							Pacific Center for Human Growth
+							{this.props.title}
 						</Text>
-						<Text style={{fontSize: 6}}> </Text>
-						<Text style={styles.descriptionText}>
-							(510) 548-8283
-						</Text>
-						<Text style={styles.descriptionText}>
-							2712 Telegraph Avenue, Berkeley, CA, 94705
-						</Text>
+            <Rating imageSize={12} style={{paddingTop: 4}} ratingCount={5}/>
 					</View>
+          <Text style={[styles.distanceText, {paddingTop: 4, paddingRight: 16}]}>
+            {this.props.distance} mi
+          </Text>
 				</View>
 		 	</TouchableOpacity>
 	 	)
@@ -63,48 +69,55 @@ import { LinearGradient } from 'expo';
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    width: '90%',
+    width: '84%',
     borderRadius: 10,
-    shadowOffset:{  width: 0,  height: 3,  },
-    shadowColor: 'black',
-    shadowOpacity: 0.15, 
-    shadowRadius: 1.5,
+    shadowOffset: { width: 0, height: 4 },
+    shadowColor: "rgba(0,0,0,0.15)",
+    shadowOpacity: 1,
+    shadowRadius: 8
   }, 
   textContainer: {
   	position: 'relative',
-  	padding: 20,
-  	paddingLeft: 12,
+  	paddingLeft: 20,
+    padding: 12,
+    paddingTop: 2,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
   },
   descriptionContainer: {
   	flexDirection: 'row',
-  	justifyContent: 'flex-start',
+  	justifyContent: 'space-between',
   	alignItems: 'flex-start',
   },
   descriptionText: {
-  	color: 'rgba(0,0,0,0.7)',
+  	color: 'rgba(0,0,0,0.8)',
   	fontSize: 12,
   },
   titleText: {
-  	fontWeight: 'bold',
-  	color: 'rgba(0,0,0,0.6)',
-  	fontSize: 16,
+  	color: 'rgba(0,0,0,0.8)',
+  	fontSize: 14,
+    fontWeight: '500',
+  },
+  distanceText: {
+    color: 'rgba(0,0,0,0.5)',
+    fontSize: 12,
+    fontWeight: '500',
   },
   welcomeImage: {
-    height: 120,
+    height: 180,
     resizeMode: 'cover',
-    marginTop: 16,
-    borderRadius: 6,
-    width: '90%',
-    borderWidth: 1, 
-    borderColor: 'rgba(0,0,0,0.1)',
-    opacity: 0.85,
+    borderRadius: 0,
+    width: '100%',
   },
   imageContainer: {
-  	flexDirection: 'row',
+  	flexDirection: 'column',
   	overflow: 'hidden',
   	borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingBottom: 12,
+
   },
   categoryDot: {
   	marginTop: 24,
